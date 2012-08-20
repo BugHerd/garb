@@ -71,7 +71,7 @@ module Garb
         http = Net::HTTP.new(uri.host, uri.port, Garb.proxy_address, Garb.proxy_port)
         http.use_ssl = true
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-        if @session.access_token.nil?
+        unless @session.access_token.nil?
           http.get("#{uri.path}#{query_string}", {'Authorization' => "Bearer #{@session.access_token.token}"})
         else
           http.get("#{uri.path}#{query_string}", {'Authorization' => "GoogleLogin auth=#{@session.auth_token}", 'GData-Version' => '3'})
