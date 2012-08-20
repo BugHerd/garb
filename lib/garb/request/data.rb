@@ -71,7 +71,7 @@ module Garb
         http = Net::HTTP.new(uri.host, uri.port, Garb.proxy_address, Garb.proxy_port)
         http.use_ssl = true
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-        http.get("#{uri.path}#{query_string}", {'Authorization' => "Bearer #{@session.access_token.token}"})
+        http.get("#{uri.path}#{query_string}", {'Authorization' => "Bearer #{@session.access_token.nil? ? @session.auth_token :@session.access_token.token}"})
       end
 
       def oauth_user_request
