@@ -17,7 +17,7 @@ module Garb
           'Passwd'      => @password,
           'accountType' => @account_type,
           'service'     => 'analytics',
-          'source'      => "garb/v#{Garb::VERSION}"
+          'source'      => "vigetLabs-garb-001"
         }
       end
 
